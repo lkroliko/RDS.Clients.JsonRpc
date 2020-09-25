@@ -1,6 +1,8 @@
-﻿namespace RDS.Clients.JsonRpc
+﻿using System;
+
+namespace RDS.Clients.JsonRpc
 {
-    public class NotificationEventArgs
+    public class NotificationEventArgs : EventArgs
     {
         public object Notification { get; }
 
