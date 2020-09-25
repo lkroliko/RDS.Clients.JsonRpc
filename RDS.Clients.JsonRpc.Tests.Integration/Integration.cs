@@ -1,6 +1,5 @@
 using Moq;
 using Newtonsoft.Json;
-using RDS.Devices.EvoLabel;
 using RDS.Net.Connections.Abstractions;
 using System;
 using System.Reflection;
@@ -20,7 +19,7 @@ namespace RDS.Clients.JsonRpc.Tests.Integration
         {
             Mock.Get(_connection).Setup(c => c.Sender).Returns(_sender);
             Mock.Get(_connection).Setup(c => c.Receiver).Returns(_receiver);
-            _client = new JsonRpcClientBuilder().UseConnection(_connection).SetNotificationBaseType(typeof(TestNotificationBase)).Build();
+            _client = JsonRpcClientBuilder.New.UseConnection(_connection).SetNotificationBaseType(typeof(TestNotificationBase)).Build();
         }
 
         [Fact]
@@ -30,7 +29,7 @@ namespace RDS.Clients.JsonRpc.Tests.Integration
 
             _client.Send<Result>(testParams);
 
-            Mock.Get(_sender).Verify(s => s.SendLine("{\"params\":{\"ParamsName\":\"test name\"},\"id\":0,\"jsonrpc\":\"2.0\",\"method\":\"test.method\"}"), Times.Once);
+            Mock.Get(_sender).Verify(s => s.SendLine("{\"method\":\"test.method\",\"params\":{\"ParamsName\":\"test name\"},\"id\":0,\"jsonrpc\":\"2.0\"}"), Times.Once);
         }
 
         [Fact]

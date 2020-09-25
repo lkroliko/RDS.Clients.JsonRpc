@@ -4,7 +4,7 @@ using RDS.Clients.JsonRpc.Core;
 using RDS.Clients.JsonRpc.Requests;
 using RDS.Net.Connections.Abstractions;
 
-namespace RDS.Devices.EvoLabel
+namespace RDS.Clients.JsonRpc
 {
     public class JsonRpcClientBuilder
     {

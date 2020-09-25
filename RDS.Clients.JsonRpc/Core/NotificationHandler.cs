@@ -14,7 +14,7 @@ namespace RDS.Clients.JsonRpc.Core
         public event EventHandler<NotificationEventArgs> NotificationReceived;
         internal virtual void OnNotificationReceived(NotificationEventArgs args) { NotificationReceived.Invoke(this, args); }
 
-        Dictionary<string, Type> _methodTypeDict = new Dictionary<string, Type>();
+        Dictionary<string, Type> _methodTypeDictionary = new Dictionary<string, Type>();
         IResponseParser _responseParser;
 
         internal NotificationHandler(IResponseParser responseParser, Type notificationBaseType)
@@ -25,10 +25,10 @@ namespace RDS.Clients.JsonRpc.Core
 
         public void Handle(Response response)
         {
-            if (_methodTypeDict.Keys.Contains(response.Method))
+            if (_methodTypeDictionary.Keys.Contains(response.Method))
             {
                 var notificationResponse = new NotificationResponse();
-                notificationResponse.Notification = Activator.CreateInstance(_methodTypeDict[response.Method]);
+                notificationResponse.Notification = Activator.CreateInstance(_methodTypeDictionary[response.Method]);
 
                 _responseParser.ParseToObject(response, notificationResponse);
                 OnNotificationReceived(new NotificationEventArgs(notificationResponse.Notification));
@@ -37,6 +37,9 @@ namespace RDS.Clients.JsonRpc.Core
 
         private void RegisterNotifications(Type type)
         {
+            if (type == null)
+                return;
+
             var subclassTypes = Assembly
             .GetAssembly(type)
             .GetTypes()
@@ -45,7 +48,7 @@ namespace RDS.Clients.JsonRpc.Core
             subclassTypes.ToList().ForEach((t) =>
             {
                 var method = ((JsonRpcMethodAttribute)Attribute.GetCustomAttribute(t, typeof(JsonRpcMethodAttribute))).Method;
-                _methodTypeDict[method] = t;
+                _methodTypeDictionary[method] = t;
             });
         }
     }

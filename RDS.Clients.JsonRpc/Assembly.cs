@@ -6,6 +6,6 @@ using System.Text;
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 [assembly: InternalsVisibleTo("RDS.Clients.JsonRpc.Tests.Unit")]
 [assembly: InternalsVisibleTo("RDS.Clients.JsonRpc.Tests.Integration")]
-namespace EvoLabelDriver
+namespace RDS.Clients.JsonRpc
 {
 }
