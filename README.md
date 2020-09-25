@@ -38,5 +38,8 @@ class SpecificNotification : Notification
 }
 ```
 ```c#
-var _client = new JsonRpcClientBuilder().UseConnection(_connection).SetNotificationBaseType(typeof(Notification)).Build();
+var _client = new JsonRpcClientBuilder()
+  .UseConnection(_connection)
+  .SetNotificationBaseType(typeof(Notification))
+  .Build();
 ```
