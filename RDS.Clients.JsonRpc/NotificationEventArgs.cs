@@ -2,7 +2,7 @@
 {
     public class NotificationEventArgs
     {
-        object Notification { get; }
+        public object Notification { get; }
 
         public NotificationEventArgs(object notification)
         {
