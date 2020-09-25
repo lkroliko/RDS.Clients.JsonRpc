@@ -7,6 +7,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Łukasz Królikowski</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/lkroliko/RDS.Clients.JsonRpc</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
