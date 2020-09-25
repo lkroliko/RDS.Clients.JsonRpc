@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace RDS.Clients.JsonRpc
 {
-    public class JsonRpcClient
+    public class JsonRpcClient : IJsonRpcClient
     {
         IConnection _connection;
         IRequestComposer _requestComposer;
