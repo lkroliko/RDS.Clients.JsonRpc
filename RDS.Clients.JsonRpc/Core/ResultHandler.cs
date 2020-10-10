@@ -32,6 +32,8 @@ namespace RDS.Clients.JsonRpc.Core
                 {
                     _responses.Remove(response);       
                     var resultResponse = _responseParser.ParseToResultResponse<T>(response.Json);
+                    if (resultResponse.Result == null)
+                        resultResponse.Result = Activator.CreateInstance<T>();
                     resultResponse.Result.RpcError = resultResponse.Error;
                     return resultResponse;
                 }
