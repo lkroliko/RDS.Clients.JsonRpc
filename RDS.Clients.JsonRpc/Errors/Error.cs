@@ -10,10 +10,10 @@ namespace RDS.Clients.JsonRpc.Errors
     public class Error
     {
         [JsonProperty("message")]
-        public string Message { get; private set; }
+        public string Message { get; set; }
 
         [JsonProperty("code")]
-        public int Code { get; private set; }
+        public int Code { get; set; }
 
         public override string ToString()
         {

@@ -8,7 +8,7 @@
     <Authors>Łukasz Królikowski</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lkroliko/RDS.Clients.JsonRpc</PackageProjectUrl>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
   </PropertyGroup>
 
   <ItemGroup>
