@@ -9,7 +9,7 @@ namespace RDS.Clients.JsonRpc
 {
     public class Result
     {
-        public Error RpcError { get; internal set; }
+        public Error RpcError { get; set; }
         public bool HasRpcError { get { return RpcError != null; } }
     }
 }
