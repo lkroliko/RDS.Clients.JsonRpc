@@ -1,5 +1,6 @@
 ﻿using RDS.Clients.JsonRpc.Requests;
 using RDS.Clients.JsonRpc.Responses;
+using RDS.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +12,12 @@ namespace RDS.Clients.JsonRpc.Core
     {
         IResponseParser _responseParser;
         List<Response> _responses = new List<Response>();
+        ILogger _logger;
 
-        public ResultHandler(IResponseParser responseParser)
+        public ResultHandler(IResponseParser responseParser, ILogger logger)
         {
             _responseParser = responseParser;
+            _logger = logger;
         }
 
         public void Handle(Response response)
@@ -30,7 +33,7 @@ namespace RDS.Clients.JsonRpc.Core
                 Response response = _responses.Find(t => t.Id == request.Id);
                 if (response != null)
                 {
-                    _responses.Remove(response);       
+                    _responses.Remove(response);
                     var resultResponse = _responseParser.ParseToResultResponse<T>(response.Json);
                     if (resultResponse.Result == null)
                         resultResponse.Result = Activator.CreateInstance<T>();
@@ -38,6 +41,7 @@ namespace RDS.Clients.JsonRpc.Core
                     return resultResponse;
                 }
             }
+            _logger.Warning($"Timeout for respond for request {request.Id}");
             return null;
         }
     }
