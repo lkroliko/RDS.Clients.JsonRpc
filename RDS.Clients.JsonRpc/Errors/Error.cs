@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RDS.Clients.JsonRpc.Errors
 {
-    internal class Error
+    public class Error
     {
         [JsonProperty("message")]
         public string Message { get; private set; }
@@ -15,7 +15,9 @@ namespace RDS.Clients.JsonRpc.Errors
         [JsonProperty("code")]
         public int Code { get; private set; }
 
-        [JsonProperty("data")]
-        public string Data { get; private set; }
+        public override string ToString()
+        {
+            return $"Code: {Code}, message {Message}";
+        }
     }
 }

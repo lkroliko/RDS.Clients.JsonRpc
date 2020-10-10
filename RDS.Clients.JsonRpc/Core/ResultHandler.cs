@@ -30,8 +30,10 @@ namespace RDS.Clients.JsonRpc.Core
                 Response response = _responses.Find(t => t.Id == request.Id);
                 if (response != null)
                 {
-                    _responses.Remove(response);
-                    return _responseParser.ParseToResultResponse<T>(response.Json);
+                    _responses.Remove(response);       
+                    var resultResponse = _responseParser.ParseToResultResponse<T>(response.Json);
+                    resultResponse.Result.RpcError = resultResponse.Error;
+                    return resultResponse;
                 }
             }
             return null;

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RDS.Clients.JsonRpc.Core;
+using RDS.Logging;
 using RDS.Net.Connections;
 using RDS.Net.Connections.Abstractions;
 using System;

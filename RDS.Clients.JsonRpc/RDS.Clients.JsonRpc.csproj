@@ -8,11 +8,12 @@
     <Authors>Łukasz Królikowski</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lkroliko/RDS.Clients.JsonRpc</PackageProjectUrl>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RDS.Logging" Version="1.0.3" />
     <PackageReference Include="RDS.Net.Connections.Abstractions" Version="1.0.0" />
   </ItemGroup>
 

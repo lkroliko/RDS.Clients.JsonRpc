@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RDS.Clients.JsonRpc.Errors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace RDS.Clients.JsonRpc
 {
     public class Result
     {
-
+        public Error RpcError { get; internal set; }
+        public bool HasRpcError { get { return RpcError != null; } }
     }
 }

@@ -33,7 +33,5 @@ namespace RDS.Clients.JsonRpc.Responses
 
         [JsonIgnore]
         public string Json { get; set; }
-
-
     }
 }
